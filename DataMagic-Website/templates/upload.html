@@ -1,0 +1,119 @@
+{% extends 'index.html' %}
+{% block title %}
+Upload Data
+{% endblock title %}
+{% block content %}
+<h1><b>Give us your data! ನಿಮ್ಮ ಡೇಟಾವನ್ನು ನಮಗೆ ನೀಡಿ!😄</b></h1>
+<p>We will make your decisions easy!</p>
+<p>ನಾವು ನಿಮ್ಮ ನಿರ್ಧಾರಗಳನ್ನು ಸುಲಭಗೊಳಿಸುತ್ತೇವೆ!</p>
+<div class="main">
+    <form action="/upload" method="POST">
+        <div class="center">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 center">
+                    <div class="btn-container">
+                        <h1 class="imgupload"><i class="fa fa-database"></i></h1>
+                        <p id="namefile">(.CSV only | 
+                        ಮಾತ್ರ)</p>
+                        <div>
+                            <label for="files" class="btn"
+                                style="background-color: black; width: 40%; height: 10%; color: white;">Upload Dataset</label>
+                            <input id="files" style="visibility:hidden;" type="file" name="file" accept=".csv" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                <p>
+ಫೈಲ್ ಅನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ</p>
+                    <input type="submit" class="btn btn-success" value="Upload File" onclick="funn()">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<style>
+    /*just bg and body style*/
+    .container {
+        background-color: rgba(82, 83, 85, 0.5);
+        border-radius: 5px;
+        width: 50%;
+    }
+
+    .center {
+        text-align: center;
+    }
+
+    #top {
+        margin-top: 2%;
+    }
+
+    .btn-container {
+        background: #fff;
+        border-radius: 5px;
+        padding-bottom: 2%;
+        margin-bottom: 2%;
+    }
+
+    .white {
+        color: white;
+    }
+
+    .imgupload {
+        color: #1E2832;
+        padding-top: 2%;
+        font-size: 7em;
+    }
+
+    #namefile {
+        color: black;
+    }
+
+    h4>strong {
+        color: #ff3f3f
+    }
+
+
+
+    /*this sets the actual file input to overlay our button*/
+    #fileup {
+        opacity: 0;
+        -moz-opacity: 0;
+        filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+        width: 50%;
+        cursor: pointer;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 4%;
+        height: 5%;
+    }
+
+    /*switch between input and not active input*/
+    #submitbtn {
+        padding: 5px 50px;
+        display: none;
+    }
+
+    #fakebtn {
+        padding: 5px 40px;
+    }
+
+
+    /*www.emilianocostanzo.com*/
+    #sign {
+        color: #1E2832;
+        position: fixed;
+        right: 10px;
+        bottom: 10px;
+        text-shadow: 0px 0px 0px #1E2832;
+        transition: all.3s;
+    }
+
+    #sign:hover {
+        color: #1E2832;
+        text-shadow: 0px 0px 5px #1E2832;
+    }
+</style>
+{% endblock content %}

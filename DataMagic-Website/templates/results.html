@@ -1,0 +1,171 @@
+{% extends 'index.html' %}
+{% block title %}
+Your Results
+{% endblock title %}
+{% block content %}
+<h1><b>Here are some results | ಕೆಲವು ಫಲಿತಾಂಶಗಳು ಇಲ್ಲಿವೆ 🧐</b></h1>
+    <p>Your data visulisation + our prediction 🥳</p>
+    <p>ನಿಮ್ಮ ಡೇಟಾ ದೃಶ್ಯೀಕರಣ + ನಮ್ಮ ಭವಿಷ್ಯ</p>
+
+<div class="container">
+        
+            <div style="position: relative; height:30%; width:80%">
+                <canvas id="myBarChart" width="40" height="20"></canvas>
+            </div>
+            <div style="position: relative; height:20%; width:80%">
+                <canvas id="myLineChart" width="40" height="20"></canvas>
+            </div>
+        
+    </div>
+    <script>
+        var barCTX = document.getElementById('myBarChart').getContext('2d');
+        var myBarChart = new Chart(barCTX, {
+            type: 'bar',
+            data: {
+                labels: {{features}},
+                datasets: [{
+                    label: 'Overall sales',
+                    data: {{values}},
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.4)',
+                        'rgba(54, 162, 235, 0.4)',
+                        'rgba(255, 206, 86, 0.4)',
+                        'rgba(75, 192, 192, 0.4)',
+                        'rgba(153, 102, 255, 0.4)',
+                        'rgba(255, 159, 64, 0.4)',
+                        'rgba(255, 99, 132, 0.4)',
+                        'rgba(54, 162, 235, 0.4)',
+                        'rgba(255, 206, 86, 0.4)',
+                        'rgba(75, 192, 192, 0.4)',
+                        'rgba(153, 102, 255, 0.4)',
+                        'rgba(255, 159, 64, 0.4)',
+                        'rgba(255, 99, 132, 0.4)',
+                        'rgba(54, 162, 235, 0.4)',
+                        'rgba(255, 206, 86, 0.4)',
+                        'rgba(75, 192, 192, 0.4)',
+                        'rgba(153, 102, 255, 0.4)',
+                        'rgba(255, 159, 64, 0.4)',
+                        'rgba(255, 99, 132, 0.4)',
+                        'rgba(54, 162, 235, 0.4)',
+                        'rgba(255, 206, 86, 0.4)',
+                        'rgba(75, 192, 192, 0.4)',
+                        'rgba(153, 102, 255, 0.4)',
+                        'rgba(255, 159, 64, 0.4)',
+                        'rgba(255, 99, 132, 0.4)',
+                        'rgba(54, 162, 235, 0.4)',
+                        'rgba(255, 206, 86, 0.4)',
+                        'rgba(75, 192, 192, 0.4)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 0.4)',
+                        'rgba(54, 162, 235, 0.4)',
+                        'rgba(255, 206, 86, 0.4)',
+                        'rgba(75, 192, 192, 0.4)',
+                        'rgba(153, 102, 255, 0.4)',
+                        'rgba(255, 159, 64, 0.4)',
+                        'rgba(255, 99, 132, 0.4)',
+                        'rgba(54, 162, 235, 0.4)',
+                        'rgba(255, 206, 86, 0.4)',
+                        'rgba(75, 192, 192, 0.4)',
+                        'rgba(153, 102, 255, 0.4)',
+                        'rgba(255, 159, 64, 0.4)',
+                        'rgba(255, 99, 132, 0.4)',
+                        'rgba(54, 162, 235, 0.4)',
+                        'rgba(255, 206, 86, 0.4)',
+                        'rgba(75, 192, 192, 0.4)',
+                        'rgba(153, 102, 255, 0.4)',
+                        'rgba(255, 159, 64, 0.4)',
+                        'rgba(255, 99, 132, 0.4)',
+                        'rgba(54, 162, 235, 0.4)',
+                        'rgba(255, 206, 86, 0.4)',
+                        'rgba(75, 192, 192, 0.4)',
+                        'rgba(153, 102, 255, 0.4)',
+                        'rgba(255, 159, 64, 0.4)',
+                        'rgba(255, 99, 132, 0.4)',
+                        'rgba(54, 162, 235, 0.4)',
+                        'rgba(255, 206, 86, 0.4)',
+                        'rgba(75, 192, 192, 0.4)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+        var lineCTX = document.getElementById('myLineChart').getContext('2d');
+        var myLineChart = new Chart(lineCTX, {
+            type: 'line',
+            data: {
+                labels: {{dates}},
+                datasets: [{
+                    label: 'Daily',
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.8)',
+                        'rgba(255, 99, 132, 0.8)',
+                        'rgba(255, 99, 132, 0.8)',
+                        'rgba(255, 99, 132, 0.8)',
+                        'rgba(255, 99, 132, 0.8)',
+                        'rgba(255, 99, 132, 0.8)',
+                        'rgba(153, 102, 255, 1)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 0.8)',
+                        'rgba(255, 99, 132, 0.8)',
+                        'rgba(255, 99, 132, 0.8)',
+                        'rgba(255, 99, 132, 0.8)',
+                        'rgba(255, 99, 132, 0.8)',
+                        'rgba(255, 99, 132, 0.8)',
+                        'rgba(153, 102, 255, 1)',
+                    ],
+                    data: {{quantity}},
+                    fill: false,
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: 'Chart.js Line Chart'
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    x: {
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Per day total quamtity'
+                        }
+                    },
+                    y: {
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Value'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"
+        integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous">
+    </script>
+
+{% endblock content %}
